@@ -10,7 +10,7 @@ export default function UseActionStateDemo() {
     async (
       _previousError: string | null,
       formData: FormData
-    ): Promise<string | null> => {
+    ): Promise<any | null> => {
       const error = await updateName(formData.get("name") as string);
       if (error) {
         return error;
