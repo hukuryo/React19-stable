@@ -1,7 +1,7 @@
 "use client";
 
 import UseActionStateDemo from "@/components/useActionStateDemo";
-import { UseOptimisticDemo } from "@/components/useOptimistic";
+import { UseOptimisticDemo } from "@/components/useOptimisticDemo";
 
 export default function Home() {
   return (
