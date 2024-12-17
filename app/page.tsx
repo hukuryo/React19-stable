@@ -1,6 +1,7 @@
 "use client";
 
 import UseActionStateDemo from "@/components/useActionStateDemo";
+import { UseFormStatusDemo } from "@/components/useFormStatus";
 import { UseOptimisticDemo } from "@/components/useOptimisticDemo";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
       <hr className="mt-10" />
       <UseOptimisticDemo />
       <hr className="mt-10" />
+      <UseFormStatusDemo />
     </>
   );
 }
