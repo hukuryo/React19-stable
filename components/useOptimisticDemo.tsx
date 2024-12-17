@@ -28,7 +28,6 @@ export const UseOptimisticDemo = () => {
           <input
             type="text"
             name="name"
-            id="name"
             className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             disabled={"" !== optimisticName}
           />
