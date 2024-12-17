@@ -1,23 +1,21 @@
-import { useState, useActionState } from "react";
+import { useActionState } from "react";
 
-const updateName = async (name: string) =>
-  new Promise((resolve) => {
+const updateName = async (name: string) => {
+  return new Promise<string>((resolve) => {
     setTimeout(() => resolve(name), 3000);
   });
+};
 
 export default function UseActionStateDemo() {
-  const [error, submitAction, isPending] = useActionState(
-    async (
-      _previousError: string | null,
-      formData: FormData
-    ): Promise<any | null> => {
-      const error = await updateName(formData.get("name") as string);
-      if (error) {
-        return error;
+  const [name, submitAction, isPending] = useActionState(
+    async (prevState: string, formData: FormData) => {
+      const newName = await updateName(formData.get("name") as string);
+      if (!newName) {
+        return "";
       }
-      return null;
+      return newName;
     },
-    null
+    ""
   );
 
   return (
@@ -32,7 +30,6 @@ export default function UseActionStateDemo() {
             type="text"
             name="name"
             className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-            placeholder="Enter your name"
           />
         </div>
         <button
@@ -47,7 +44,7 @@ export default function UseActionStateDemo() {
           {isPending ? "Updating..." : "Update"}
         </button>
         {isPending && <p className="text-sm text-gray-500">Loading...</p>}
-        {error && <p className="text-sm text-red-500">{error}</p>}
+        {name && <p className="text-sm">{name}</p>}
       </form>
     </div>
   );
