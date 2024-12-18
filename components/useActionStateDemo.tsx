@@ -15,36 +15,36 @@ export default function UseActionStateDemo() {
       }
       return newName;
     },
-    ""
+    "aaa"
   );
 
   return (
     <div className="mt-10">
-      <h1 className="flex justify-center font-bold text-xl">useActionState</h1>
+      <h1 className="flex justify-center text-xl">useActionState</h1>
       <form
         action={submitAction}
-        className="space-y-4 bg-white p-6 shadow-md rounded-lg max-w-md mx-auto"
+        className="space-y-4 p-6 shadow-md max-w-md mx-auto"
       >
         <div className="flex flex-col">
           <input
             type="text"
             name="name"
-            className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="border border-gray-300 p-2"
           />
         </div>
         <button
           type="submit"
           disabled={isPending}
-          className={`w-full py-2 px-4 rounded-md text-white ${
+          className={`w-full py-2 px-4 text-white ${
             isPending
-              ? "bg-emerald-400 cursor-not-allowed"
-              : "bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+              ? "bg-emerald-400"
+              : "bg-emerald-600 hover:bg-emerald-700 focus:ring-emerald-500"
           }`}
         >
           {isPending ? "Updating..." : "Update"}
         </button>
-        {isPending && <p className="text-sm text-gray-500">Loading...</p>}
-        {name && <p className="text-sm">{name}</p>}
+        {isPending && <p>Loading...</p>}
+        {name && <p>{name}</p>}
       </form>
     </div>
   );
