@@ -6,12 +6,14 @@ async function updateName(name: string) {
 }
 
 export const UseOptimisticDemo = () => {
+  const [name, setName] = useState("");
   const [optimisticName, setOptimisticName] = useOptimistic("");
 
   const submitAction = async (formData: FormData) => {
     const newName = formData.get("name") as string;
     setOptimisticName(newName);
     const updatedName = await updateName(newName);
+    await setName(updatedName);
   };
 
   return (
@@ -19,28 +21,24 @@ export const UseOptimisticDemo = () => {
       <h1 className="flex justify-center font-bold text-xl">useOptimistic</h1>
       <form
         action={submitAction}
-        className="space-y-4 bg-white p-6 shadow-md rounded-lg max-w-md mx-auto"
+        className="space-y-4 bg-white p-6 shadow-md max-w-md mx-auto"
       >
         <div className="flex flex-col">
-          <label htmlFor="name" className="mb-2 font-medium text-gray-700">
-            Change Name:
-          </label>
           <input
             type="text"
             name="name"
-            className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="border border-gray-300 "
             disabled={"" !== optimisticName}
           />
         </div>
-        <button
-          type="submit"
-          className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        >
-          登録
+        <button type="submit" className="bg-blue-500  text-white py-2 px-4  ">
+          Submit
         </button>
       </form>
-      <p className="mt-4 text-gray-600 text-center">
-        Your name is: <span className="font-semibold">{optimisticName}</span>
+      <p className="mt-4 text-center">
+        Your name is:{" "}
+        <span className="font-semibold text-red-500">{optimisticName}</span>
+        <span className="font-semibold text-blue-500">{name}</span>
       </p>
     </div>
   );
