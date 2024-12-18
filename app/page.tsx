@@ -9,9 +9,9 @@ export default function Home() {
     <>
       <UseActionStateDemo />
       <hr className="mt-10" />
-      <UseOptimisticDemo />
-      <hr className="mt-10" />
       <UseFormStatusDemo />
+      <hr className="mt-10" />
+      <UseOptimisticDemo />
     </>
   );
 }
