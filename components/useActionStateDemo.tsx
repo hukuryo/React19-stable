@@ -35,15 +35,11 @@ export default function UseActionStateDemo() {
         <button
           type="submit"
           disabled={isPending}
-          className={`w-full py-2 px-4 text-white ${
-            isPending
-              ? "bg-emerald-400"
-              : "bg-emerald-600 hover:bg-emerald-700 focus:ring-emerald-500"
-          }`}
+          className={`w-full py-2 px-4 text-white bg-emerald-400 data-[disabled=true]:bg-red-500`}
+          data-disabled={isPending}
         >
           {isPending ? "Updating..." : "Update"}
         </button>
-        {isPending && <p>Loading...</p>}
         {name && <p>{name}</p>}
       </form>
     </div>
